@@ -1,0 +1,225 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap');
+
+:root{
+  --ink:#0a0a0a;
+  --paper:#f5f4f0;
+  --white:#fff;
+  --muted:#73736f;
+  --line:rgba(10,10,10,.12);
+  --gold:#b99045;
+  --ease:cubic-bezier(.2,.75,.2,1);
+  --pad:clamp(20px,5vw,76px);
+  --max:1440px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"DM Sans",Arial,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.035;background-image:linear-gradient(rgba(0,0,0,.8) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.8) 1px,transparent 1px);background-size:80px 80px;z-index:9999}
+a{text-decoration:none;color:inherit}
+button,input,textarea,select{font:inherit}
+img{display:block;max-width:100%}
+h1,h2,h3,h4{font-family:"Manrope",Arial,sans-serif;line-height:1.02;letter-spacing:-.055em}
+h1{font-size:clamp(48px,7.5vw,108px)}
+h2{font-size:clamp(40px,5.5vw,76px)}
+h3{font-size:clamp(24px,2.5vw,34px)}
+.container{width:min(var(--max),calc(100% - 2*var(--pad)));margin:auto}
+.section{padding:125px 0}
+.section-sm{padding:85px 0}
+.eyebrow{font-size:10px;text-transform:uppercase;letter-spacing:.2em;font-weight:700;color:var(--muted);margin-bottom:22px}
+.dark{background:var(--ink);color:var(--white)}
+.dark .eyebrow{color:#aaa}
+.reveal{opacity:0;transform:translateY(35px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+/* NAV */
+.site-header{position:absolute;top:0;left:0;width:100%;z-index:1000;color:#fff;padding:26px var(--pad)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:30px}
+.logo{display:flex;align-items:center;gap:13px}
+.logo img{width:105px;height:auto}
+.logo-word{font-family:"Manrope";font-size:17px;font-weight:800;letter-spacing:.12em}
+.nav-links{display:flex;align-items:center;gap:30px;list-style:none}
+.nav-links a{font-size:11px;font-weight:700;letter-spacing:.06em;position:relative}
+.nav-links a:after{content:"";position:absolute;left:0;bottom:-7px;width:0;height:1px;background:currentColor;transition:width .35s var(--ease)}
+.nav-links a:hover:after,.nav-links a.active:after{width:100%}
+.nav-quote{border:1px solid rgba(255,255,255,.45);padding:11px 16px;transition:.35s var(--ease)}
+.nav-quote:hover{background:#fff;color:#111}
+.menu{display:none;border:0;background:transparent;color:#fff;font-size:25px}
+
+/* HERO */
+.hero{min-height:100svh;background:#080808;color:#fff;position:relative;display:flex;align-items:center;overflow:hidden;padding:150px 0 100px}
+.hero:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 78% 30%,rgba(185,144,69,.17),transparent 26%),linear-gradient(90deg,rgba(0,0,0,.96) 15%,rgba(0,0,0,.55) 52%,rgba(0,0,0,.15));pointer-events:none}
+.hero-image{position:absolute;inset:0;background:url("assets/streetwear-hoodie.jpg") 73% center/cover no-repeat;filter:saturate(.8) contrast(1.05);opacity:.58}
+.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}
+.hero-copy{max-width:850px}
+.hero h1{max-width:900px}
+.hero h1 span{color:#d0b27b}
+.hero-lead{max-width:640px;color:rgba(255,255,255,.72);font-size:16px;line-height:1.85;margin:30px 0 36px}
+.actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:15px;min-height:52px;padding:0 23px;border:1px solid transparent;font-size:10px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;transition:transform .4s var(--ease),background .4s var(--ease),color .4s var(--ease),border-color .4s var(--ease)}
+.btn:hover{transform:translateY(-4px)}
+.btn-primary{background:#fff;color:#111}
+.btn-primary:hover{background:transparent;border-color:#fff;color:#fff}
+.btn-dark{background:#111;color:#fff}
+.btn-dark:hover{background:#333}
+.btn-outline{border-color:rgba(0,0,0,.3)}
+.btn-outline:hover{background:#111;color:#fff}
+.btn .arrow{font-size:17px;transition:transform .35s var(--ease)}
+.btn:hover .arrow{transform:translateX(5px)}
+.hero-note{margin-top:50px;font-size:9px;letter-spacing:.16em;color:rgba(255,255,255,.48);text-transform:uppercase}
+.hero-card{justify-self:end;width:min(440px,100%);border:1px solid rgba(255,255,255,.15);padding:12px;background:rgba(255,255,255,.035);backdrop-filter:blur(10px);box-shadow:0 30px 80px rgba(0,0,0,.35);transform:rotate(1.5deg);transition:transform .7s var(--ease)}
+.hero-card:hover{transform:rotate(0) translateY(-8px)}
+.hero-card img{width:100%;aspect-ratio:1/1;object-fit:cover}
+.hero-card-meta{display:flex;justify-content:space-between;padding:14px 4px 3px;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#aaa}
+
+/* MARQUEE */
+.marquee{background:#111;color:#fff;border-top:1px solid #252525;border-bottom:1px solid #252525;overflow:hidden;white-space:nowrap}
+.marquee-track{display:inline-flex;gap:55px;padding:17px 0;animation:marquee 25s linear infinite;font-size:9px;letter-spacing:.18em;text-transform:uppercase;font-weight:700}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* SECTIONS */
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:50px;margin-bottom:55px}
+.section-head h2{max-width:850px}
+.section-desc{max-width:440px;color:var(--muted);font-size:14px}
+.kicker{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:800;margin-bottom:12px}
+
+/* CATEGORY */
+.category-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.category{position:relative;min-height:580px;overflow:hidden;color:#fff;padding:40px;display:flex;flex-direction:column;justify-content:flex-end;background:#151515}
+.category:before{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.8),transparent 60%);z-index:1}
+.category.sport{background:url("assets/sportswear-shorts.jpg") center/cover no-repeat}
+.category.street{background:url("assets/streetwear-hoodie.jpg") center/cover no-repeat}
+.category .inner{position:relative;z-index:2}
+.category .tag{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:#d0b27b;margin-bottom:15px}
+.category p{max-width:500px;color:rgba(255,255,255,.7);font-size:13px;margin:17px 0 22px}
+.category .go{font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;display:inline-flex;gap:12px}
+.category:hover{box-shadow:0 25px 70px rgba(0,0,0,.18)}
+.category:after{content:"";position:absolute;inset:-8%;background:inherit;transition:transform 1s var(--ease);z-index:0}
+.category:hover:after{transform:scale(1.045)}
+
+/* PRODUCTS */
+.product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.product-card{background:#fff;position:relative;overflow:hidden;border:1px solid rgba(0,0,0,.07);transition:transform .55s var(--ease),box-shadow .55s var(--ease)}
+.product-card:hover{transform:translateY(-9px);box-shadow:0 25px 60px rgba(0,0,0,.11)}
+.product-media{height:470px;background:#ddd;overflow:hidden;position:relative}
+.product-media img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease),filter .9s var(--ease)}
+.product-card:hover .product-media img{transform:scale(1.055);filter:contrast(1.04)}
+.product-index{position:absolute;top:16px;left:16px;width:38px;height:38px;background:#fff;display:grid;place-items:center;font-size:9px;font-weight:800;z-index:2}
+.product-info{padding:23px}
+.product-info h3{font-size:23px;letter-spacing:-.04em}
+.product-info p{font-size:12px;color:var(--muted);margin-top:8px}
+.product-link{display:inline-flex;margin-top:18px;font-size:9px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;border-bottom:1px solid #111;padding-bottom:4px}
+
+/* PROCESS */
+.process{border-top:1px solid var(--line)}
+.process-row{display:grid;grid-template-columns:80px 1fr 1fr;gap:40px;align-items:center;padding:30px 0;border-bottom:1px solid var(--line);transition:padding .45s var(--ease),background .45s var(--ease)}
+.process-row:hover{padding-left:18px;background:rgba(255,255,255,.45)}
+.process-num{font-size:10px;font-weight:800;color:var(--gold);letter-spacing:.1em}
+.process-row h3{font-size:26px}
+.process-row p{color:var(--muted);font-size:13px}
+
+/* FEATURE */
+.feature{display:grid;grid-template-columns:1fr 1fr;min-height:600px}
+.feature-media{min-height:520px;background:url("assets/streetwear-hoodie.jpg") center/cover no-repeat}
+.feature-copy{padding:90px var(--pad);display:flex;flex-direction:column;justify-content:center;background:#111;color:#fff}
+.feature-copy p{max-width:520px;color:#aaa;margin:25px 0 30px;line-height:1.8}
+.feature-list{list-style:none;max-width:520px}
+.feature-list li{padding:14px 0;border-top:1px solid #292929;font-size:12px}
+.feature-list li:last-child{border-bottom:1px solid #292929}
+
+/* TESTIMONIALS */
+.quote-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.quote-card{padding:30px;background:#fff;border:1px solid var(--line);min-height:220px;display:flex;flex-direction:column;justify-content:space-between;transition:transform .45s var(--ease)}
+.quote-card:hover{transform:translateY(-7px)}
+.quote-card p{font-family:"Manrope";font-size:18px;line-height:1.35;letter-spacing:-.03em}
+.quote-card small{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+/* CTA */
+.cta{padding:120px 0;background:#0b0b0b;color:#fff;position:relative;overflow:hidden}
+.cta:before{content:"ARVEX";position:absolute;right:-30px;bottom:-70px;font:800 clamp(120px,24vw,360px)/.8 Manrope;color:rgba(255,255,255,.035);letter-spacing:-.08em}
+.cta-inner{position:relative;z-index:1;display:flex;align-items:end;justify-content:space-between;gap:50px}
+.cta h2{max-width:850px}
+
+/* INNER PAGES */
+.page-hero{padding:190px 0 90px;background:#111;color:#fff;position:relative;overflow:hidden}
+.page-hero:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 35%,rgba(185,144,69,.15),transparent 28%)}
+.page-hero .container{position:relative;z-index:1}
+.page-hero h1{max-width:900px;font-size:clamp(48px,6vw,88px)}
+.page-hero p{max-width:650px;color:#aaa;margin-top:24px;font-size:15px}
+.breadcrumb{font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:#aaa;margin-bottom:20px}
+
+/* ABOUT / CONTACT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.about-copy p{color:var(--muted);font-size:15px;line-height:1.9;margin-bottom:20px}
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);margin-top:45px}
+.stat{padding:22px 15px 0 0;border-right:1px solid var(--line)}
+.stat:last-child{border-right:0;padding-left:20px}
+.stat b{font:800 42px/1 Manrope;display:block}
+.stat span{display:block;font-size:10px;color:var(--muted);margin-top:8px}
+.specs{border-top:1px solid var(--line)}
+.spec{padding:23px 0;border-bottom:1px solid var(--line)}
+.spec dt{font-size:9px;text-transform:uppercase;letter-spacing:.15em;color:var(--gold);font-weight:800}
+.spec dd{margin-top:7px;font-size:14px}
+
+.contact-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:70px}
+.form{background:#fff;padding:38px;border:1px solid var(--line)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:9px;letter-spacing:.13em;text-transform:uppercase;font-weight:800;margin-bottom:7px}
+.field input,.field textarea,.field select{width:100%;border:1px solid var(--line);background:#faf9f6;padding:13px 14px;outline:0;transition:border .25s,box-shadow .25s}
+.field textarea{min-height:150px;resize:vertical}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:#111;box-shadow:0 0 0 3px rgba(0,0,0,.05)}
+.contact-card{padding:25px 0;border-top:1px solid var(--line)}
+.contact-card:last-child{border-bottom:1px solid var(--line)}
+.contact-card span{font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+.contact-card a{display:block;font:700 21px Manrope;margin-top:8px}
+.notice{font-size:11px;color:var(--muted);margin-top:13px}
+
+/* FLOAT */
+.whatsapp{position:fixed;right:24px;bottom:24px;z-index:1001;background:#111;color:#fff;padding:13px 17px;border:1px solid #333;display:flex;align-items:center;gap:9px;font-size:9px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;box-shadow:0 15px 35px rgba(0,0,0,.2);transition:transform .35s var(--ease)}
+.whatsapp:hover{transform:translateY(-5px)}
+
+/* FOOTER */
+footer{background:#0b0b0b;color:#fff;padding:75px 0 22px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;padding-bottom:60px}
+.footer-about p{max-width:370px;color:#888;font-size:12px;margin-top:18px}
+.footer-title{font-size:9px;text-transform:uppercase;letter-spacing:.16em;color:#777;margin-bottom:15px;font-weight:800}
+.footer-links{list-style:none}
+.footer-links li{margin:8px 0;color:#bbb;font-size:12px}
+.footer-links a:hover{color:#fff}
+.footer-bottom{border-top:1px solid #222;padding-top:18px;display:flex;justify-content:space-between;gap:20px;color:#666;font-size:9px;letter-spacing:.04em}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .nav-links,.nav-quote{display:none}.menu{display:block}
+  .nav.open{align-items:flex-start}.nav.open .nav-links{display:flex;position:absolute;top:78px;left:var(--pad);right:var(--pad);flex-direction:column;align-items:stretch;gap:0;background:#111;border:1px solid #292929;padding:10px}
+  .nav.open .nav-links a{display:block;padding:14px;border-bottom:1px solid #242424}
+  .hero-grid,.about-grid,.contact-grid,.feature{grid-template-columns:1fr}
+  .hero-card{justify-self:start;max-width:430px}
+  .hero{padding-top:140px}
+  .category-grid,.product-grid,.quote-grid{grid-template-columns:1fr 1fr}
+  .product-media{height:420px}
+  .process-row{grid-template-columns:60px 1fr}
+  .process-row p{grid-column:2}
+  .feature-media{min-height:500px}
+  .footer-grid{grid-template-columns:1.5fr 1fr 1fr}
+}
+@media(max-width:600px){
+  :root{--pad:22px}
+  .section{padding:85px 0}.section-sm{padding:65px 0}
+  .hero{padding-top:125px;min-height:auto;padding-bottom:80px}
+  .hero-card{display:none}
+  .category-grid,.product-grid,.quote-grid,.form-row{grid-template-columns:1fr}
+  .category{min-height:480px}
+  .product-media{height:390px}
+  .section-head,.cta-inner{display:block}
+  .section-desc{margin-top:18px}
+  .cta h2{margin-bottom:28px}
+  .stat-grid{grid-template-columns:1fr}
+  .stat{border-right:0;border-bottom:1px solid var(--line);padding:20px 0}
+  .stat:last-child{border-bottom:0;padding-left:0}
+  .page-hero{padding:145px 0 70px}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .footer-about{grid-column:1/-1}
+  .footer-bottom{flex-direction:column}
+  .whatsapp{right:14px;bottom:14px}
+}
